@@ -14,12 +14,6 @@ import time
 from scipy import spatial
 app = Flask(__name__)
 
-@app.route('/')
-def hello_world():
-   # return 'Hello, World!'
-    return jsonify(message='Hello, World')
-
-
 def KtoF(K):
  F =  (K * 9)/5 - 459.67
  return F
@@ -121,6 +115,7 @@ class KDTree:
                 results[var2[0]]=round(metersToInches(self.ndata[var2[0]][index]),2)
             else:
                 results[var2[0]]=round(self.ndata[var2[0]][index],2)
+                  
         #convert u,v into degrees
         u=results['u-component of wind']
         v=results['v-component of wind']
@@ -152,22 +147,14 @@ class Zipcode:
 #loop through forecast files
 t={}
 i=0
-for f in glob.iglob('/Users/elaineyang/Downloads/hrrr/files/*.grib2'):
+for f in glob.iglob('~/Downloads/hrrr/files/*.grib2'):
     print (f)
     t[i]=KDTree(f)
     t[i].createKDTree()
     i+=1
 
-z=Zipcode('/Users/elaineyang/Downloads/zipcode/zipcode.csv')
+z=Zipcode('~/Downloads/zipcode/zipcode.csv')
 z.loadZipFile()
-
-
-
-#t=KDTree('/Users/elaineyang/Downloads/hrrr/hrrr.t00z.wrfsfcf06.grib2')
-#t.createKDTree()
-#z=Zipcode('/Users/elaineyang/Downloads/zipcode/zipcode.csv')
-#z.loadZipFile()
-
 
 class DateTimeEncoder(json.JSONEncoder):
     def default(self, o):
@@ -193,9 +180,6 @@ def grib():
             lat=float(request.args.get("lat"))
         lon=float(request.args.get("lon"))
 
-
-    #print (lat[0],lon[0])
-    #print(t.displayValues(37.7749,-122.41942))
     for j in t:
         #results[j]=t[j].displayValues(lat,lon)
         results[j]=t[j].displayValues(lat,lon)
