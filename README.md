@@ -1,5 +1,5 @@
 ## WeatherServer (Flask server with API) 
-###A Quick Overview of Weather Models
+### A Quick Overview of Weather Models
 1. Global models: 
  * Global Forecast System(GFS): It is at about 18 miles (28 kilometers) between grid points. You can read more about it through [NOAA](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs). It is free and you can download the data from this [link](http://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/).
  * European Centre for Medium-Range Weather Forecasts(ECMWF): New cycle reduces the horizontal grid spacing for high-resolution forecasts from 16 km to just 9 km. You can read more about [ECMWF here](https://www.ecmwf.int/en/about/media-centre/news/2016/new-forecast-model-cycle-brings-highest-ever-resolution). It is **NOT** free.
