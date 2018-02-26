@@ -4,7 +4,7 @@
  * Global Forecast System(GFS): It is at about 18 miles (28 kilometers) between grid points. You can read more about it through [NOAA](https://www.ncdc.noaa.gov/data-access/model-data/model-datasets/global-forcast-system-gfs). It is free and you can download the data from this [link](http://nomads.ncep.noaa.gov/pub/data/nccf/com/gfs/prod/).
  * European Centre for Medium-Range Weather Forecasts(ECMWF): New cycle reduces the horizontal grid spacing for high-resolution forecasts from 16 km to just 9 km. You can read more about [ECMWF here](https://www.ecmwf.int/en/about/media-centre/news/2016/new-forecast-model-cycle-brings-highest-ever-resolution). It is **NOT** free.
 
-2. Reginal models:
+2. Regional models:
  * NAM: It is the North American Mesoscale Forecast System. You can see the coverage [here](http://www.emc.ncep.noaa.gov/mmb/namgrids/g212.12km.jpg). It is at horizontal resolution of 12km, 3-hourly, +00 to +84 hours. 
  * HRRR: High Resolution Rapid Refresh run by NCEP. Its resolution is at 3km, hourly from 00-18 hours only. Here is more information about [HRRR](https://rapidrefresh.noaa.gov/hrrr/).
  
