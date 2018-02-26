@@ -17,8 +17,8 @@ the layout and geographical characteristics of the grid the data is to be plotte
 There are many more weather forecast models out there. For this purpose, we are only going to show how HRRR works. 
  
 ### Steps to running the server
-* install Flask: try to see if you can ask your server to produce "Hello, World!" in json format. You can follow the [tutorial](http://flask.pocoo.org/docs/0.12/tutorial/) here.
-*  Download HRRR grib2 files into your local directory [HRRR](http://nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/). 
+1. install Flask: try to see if you can ask your server to produce "Hello, World!" in json format. You can follow the [tutorial](http://flask.pocoo.org/docs/0.12/tutorial/) here.
+2.  Download HRRR grib2 files into your local directory [HRRR](http://nomads.ncep.noaa.gov/pub/data/nccf/com/hrrr/prod/). 
 
 #### Table (a quick dump of some variables)
 
