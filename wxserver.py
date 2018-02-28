@@ -23,7 +23,7 @@ for f in glob.iglob('/Users/elaineyang/Downloads/hrrr/files/*.grib2'):
     i+=1
 
 #load zipcode information in z
-z=Zipcode('/Users/elaineyang/Downloads/zipcode/zipcode.csv')
+z=Zipcode('data/zipcode/zipcode.csv')
 z.loadZipFile()
 
 class DateTimeEncoder(json.JSONEncoder):
