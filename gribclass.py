@@ -67,16 +67,17 @@ class KDTree:
         nlatlon=np.stack((nlat,nlon),axis=-1)
         self.validDate=grib.validDate
 
+        #loop through each parameter and find all values
         info=self.get_parameter_info()
             for var1 in info:
-            print (var1[1],var1[2])
-            grib=grbs.select(shortName=var1[1],level=var1[2])[0]
-            data=grib.values
-            ndata=np.asarray(data)
-            ndata=ndata.flatten()
-            self.KDT[var1[0]]=spatial.KDTree(nlatlon)
-            self.ndata[var1[0]]=ndata
+                grib=grbs.select(shortName=var1[1],level=var1[2])[0]
+                data=grib.values
+                ndata=np.asarray(data)
+                ndata=ndata.flatten()
+                self.KDT[var1[0]]=spatial.KDTree(nlatlon)
+                self.ndata[var1[0]]=ndata
 
+    # this function returns a json output(a list of parameters and values)
     def displayValues(self,lat,lon):
         self.latlon=(lat,lon)
         results={}
