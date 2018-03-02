@@ -20,20 +20,18 @@ class Geocoder:
         else:
             y=self.zipcodes[(self.zipcodes.state==state)]
             index = y.index.values
-            j=0
-            # add a column with this value, and pick the "max" one pandas - idxmax
-            for i in y.city:
-                if jellyfish.jaro_winkler(i,city) > 0.9:
-                    x = y.iloc[j]
-                    return x.to_dict()
+            df = pd.DataFrame(y.city,columns=['city','score'])
+            for index, row in df.iterrows():
+                row[1]=jellyfish.jaro_winkler(row[0],city)
 
-                j+=1
-
+            maxValueIndex=df['score'].idxmax()
+            x=y.loc[maxValueIndex]
+            return x.to_dict()
 
 
 #if __name__ == "__main__":
 #   geocoder = Geocoder("data/zipcode/zipcode.csv")
 #   print(geocoder.lookupZip('94107'))
-#   print(geocoder.lookupCityState('San Francisco','CA'))
+#   print(geocoder.lookupCityState('West Farmingtn','ME'))
 #   print(geocoder.lookupCityState('San Francisc','CA'))
 #   print(geocoder.lookupZip('94107'))
