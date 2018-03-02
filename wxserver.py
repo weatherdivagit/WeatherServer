@@ -1,4 +1,4 @@
-rom flask import jsonify,make_response
+from flask import jsonify,make_response
 from flask import Flask, render_template, redirect, url_for, request
 from flask import current_app
 from json import dumps
