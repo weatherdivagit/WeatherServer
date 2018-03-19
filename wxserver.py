@@ -6,6 +6,7 @@ import numpy as np
 from Grib import ForecastData
 from Geocoder import Geocoder
 
+#make some comments 
 forecast=ForecastData()
 forecast.gribKDTree()
 geocoder = Geocoder("/Users/elaineyang/Documents/WeatherServer/data/zipcode/uszip.csv")
