@@ -3,7 +3,7 @@ from json import dumps
 from datetime import datetime
 import json
 import numpy as np
-from Grib import ForecastData
+from forecastdata import ForecastData
 from Geocoder import Geocoder
 
 #make some comments 
