@@ -29,11 +29,13 @@ class ForecastData:
         i=0
 
         for f in glob.iglob('/Users/elaineyang/Downloads/hrrr/files/*.grib2'):
+            start=datetime.now()
             gribdata[i]={}
             print (f)
             #We only want to create a kdtree once
             grbs = pygrib.open(f)
             if i==0:
+                start=datetime.now()
                 grib=grbs.select(parameterName='Temperature',typeOfLevel='surface')[0]
                 lats,lons=grib.latlons()
                 nlat=np.asarray(lats)
@@ -55,6 +57,7 @@ class ForecastData:
                 gribdata[i][var[1]]=ndata.flatten()
 
             i+=1
+            print (datetime.now()-start)
 
         self.numOfFctPeriod=i
         self.gribdata=gribdata
@@ -126,16 +129,14 @@ class ForecastData:
         return results
 
 
-#if __name__ == "__main__":
-#    forecast = ForecastData()
-#    start=datetime.now()
-#    forecast.gribKDTree()
-#    print (datetime.now()-start)
-#    start=datetime.now()
-#    f={}
-#    f['forecast']={}
-#    f['forecast']=forecast.forecastDisplay(38.8,-121.4)
-#    print (datetime.now()-start)
+if __name__ == "__main__":
+    forecast = ForecastData()
+    forecast.gribKDTree()
+    start=datetime.now()
+    f={}
+    f['forecast']={}
+    f['forecast']=forecast.forecastDisplay(38.8,-121.4)
+    print (datetime.now()-start)
 #    print (f)
    #print(geocoder.lookupCityState('San Francisc','CA'))
    #print(geocoder.lookupZip('94107'))

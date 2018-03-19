@@ -8,7 +8,7 @@ from Geocoder import Geocoder
 
 forecast=ForecastData()
 forecast.gribKDTree()
-geocoder = Geocoder("data/zipcode/zipcode.csv")
+geocoder = Geocoder("/Users/elaineyang/Documents/WeatherServer/data/zipcode/uszip.csv")
 
 app = Flask(__name__)
 
@@ -32,29 +32,20 @@ def grib():
     if 'zip' in request.args:
         zipcode=request.args.get("zip")
         cityinfo=geocoder.lookupZip(zipcode)
-        lat=float(cityinfo['latitude'])
-        lon=float(cityinfo['longitude'])
     elif 'lat' and 'lon' in request.args:
         lat=float(request.args.get("lat"))
         lon=float(request.args.get("lon"))
+        cityinfo=geocoder.lookupLatLon(lat,lon)
     elif 'city' and 'state' in request.args:
         city=request.args.get("city")
         state=request.args.get("state")
         cityinfo=geocoder.lookupCityState(city,state)
-        lat=float(cityinfo['latitude'])
-        lon=float(cityinfo['longitude'])
-        zipcode=str(cityinfo['zip'])
     else:
         results="Please enter zip, lat,lon or city,state\n"
         return json.dumps(results)
 
     results['cityInfo']={}
-    if len(zipcode)==5:
-        results['cityInfo']=cityinfo
-    else:
-        results['cityInfo']['lat']=float(lat)
-        results['cityInfo']['lon']=float(lon)
-
+    results['cityInfo']=cityinfo
     results['forecast']=forecast.forecastDisplay(lat,lon)
 
     return json.dumps(results, indent=4,cls=DateTimeEncoder)
