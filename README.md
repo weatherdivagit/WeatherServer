@@ -47,5 +47,5 @@ Water equivalent of accumulated snow depth |sdwe| surface| 0
  * 2017 Census shapefiles from [2017 TIGER/Line Shapefiles](https://www.census.gov/geo/maps-data/data/tiger-line.html)
  * [Zillow's](https://www.zillow.com/howto/api/neighborhood-boundaries.htm) neighborhood files 
  
-5. API output
+###API output
 ![Screenshot](https://github.com/weatherdivagit/WeatherServer/blob/master/Screen%20Shot%202018-03-14%20at%2010.24.27%20AM.png)
