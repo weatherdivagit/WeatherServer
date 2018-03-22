@@ -28,13 +28,13 @@ class Shapes:
     
     def getZipFromLatLon(self,lat,lon):
         left, bottom, right, top =(float(lat)-0.0001,float(lon)-0.0001,float(lat)+0.0001,float(lon)+0.0001)
-        thisIndex=list(self.idx.nearest((left,bottom,right,top)))[0]
+        thisIndex=list(self.idx.intersection((left,bottom,right,top)))[0]
         zipcode=self.records[thisIndex][0]
         return zipcode
 
     def getNeighborhoodFromLatLon(self,lat,lon):
         left, bottom, right, top =(float(lat)-0.0001,float(lon)-0.0001,float(lat)+0.0001,float(lon)+0.0001)
-        thisIndex=list(self.idx.nearest((left,bottom,right,top)))[0]
+        thisIndex=list(self.idx.intersection((left,bottom,right,top)))[0]
         neighborhood=self.records[thisIndex][3]
         return neighborhood
 

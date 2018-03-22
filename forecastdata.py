@@ -6,6 +6,8 @@ import calendar
 import time
 from scipy import spatial
 
+#make this work with all grib data GFS,ECMWF etc
+# a list of levels
 class ForecastData:
 
     #Holds all the info of parameters we want
@@ -63,6 +65,7 @@ class ForecastData:
         self.gribdata=gribdata
 
     def forecastDisplay(self,lat,lon):
+        #make a class UnitConversion(param,shortname,unit,value)
         def KtoF(K):
             F =  (K * 9)/5 - 459.67
             return F
@@ -84,20 +87,18 @@ class ForecastData:
             return(m*39.3701)
 
         def DatetimeToEpoch(datetime):
-            date_time = '2018-02-20T23:00:00'
             pattern = '%Y-%m-%dT%H:%M:%S'
-            epoch = int(calendar.timegm(time.strptime(date_time, pattern)))
+            epoch = int(calendar.timegm(time.strptime(datetime, pattern)))
             return epoch
 
         #find the index right away for this pair of lat,lon
         latlon=(lat,lon)
         distance,index=self.KDT.query(latlon)
-        results={}# contains json forecast data
+        results={}# contains forecast data structure
         i=0
         while i < self.numOfFctPeriod: 
             results[i]={}
-            info=self.parameterInfo()
-            for var in info:
+            for var in self.parameterInfo():
                 if var[1]=='2t' or var[1]=='2d':
                     results[i][var[0]]=int(round(KtoF(self.gribdata[i][var[1]][index]),0))
                 elif var[1]=='10si' or var[1]=='gust':
@@ -118,7 +119,7 @@ class ForecastData:
             #convert u,v into degrees
             u=results[i]['u-component of wind']
             v=results[i]['v-component of wind']
-            results[i]['wind in degrees']=int((270 - (180/np.pi)*np.arctan2(v,u))%360)
+            results[i]['wind_in_degrees']=int((270 - (180/np.pi)*np.arctan2(v,u))%360)
             del results[i]['u-component of wind']
             del results[i]['v-component of wind']
             validDate=self.gribdata[i]['validDate']
