@@ -45,6 +45,6 @@ Water equivalent of accumulated snow depth |sdwe| surface| 0
 4. Zipcode and geo-lookup source
  * Download a zipcode file from [ZIP-CODES] (https://www.zip-codes.com/) 
  * 2017 Census shapefiles from [2017 TIGER/Line Shapefiles] (https://www.census.gov/geo/maps-data/data/tiger-line.html)
- * Zillow's (https://www.zillow.com/howto/api/neighborhood-boundaries.htm) neighborhood files 
+ * [Zillow's](https://www.zillow.com/howto/api/neighborhood-boundaries.htm) neighborhood files 
  
 5. API output
