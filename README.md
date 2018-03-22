@@ -38,6 +38,13 @@ Total precipitation |tp |surface| 0
 Water equivalent of accumulated snow depth |sdwe| surface| 0
 
 3. Process grib2 files in pygrib: 
- *  [GRIB](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.KDTree.html#scipy.spatial.KDTree): create a KDTree class that holds all the grib data in memory so we can grab a piece of the data as we need either it is a lat/lon or zip code query. This class provides an index into a set of 2-dimensional points which can be used to rapidly look up the nearest neighbors of any point.  All values of a variable(i.e. temperature, pressure etc.) in a grib file is flattened into a 2D array for a quick nearest-neighbor lookup.
+ *  [KDTree](https://docs.scipy.org/doc/scipy/reference/generated/scipy.spatial.KDTree.html#scipy.spatial.KDTree): create a KDTree class that holds all the grib data in memory so we can grab a piece of the data as we need either it is a lat/lon or zip code query. This class provides an index into a set of 2-dimensional points which can be used to rapidly look up the nearest neighbors of any point.  All values of a variable(i.e. temperature, pressure etc.) in a grib file is flattened into a 2D array for a quick nearest-neighbor lookup.
  *  HRRR's forecast goes from +00 to +18 hours. Thus, you will need to have a loop in the main function that loops through 18 files and create a single KDTree for each file. 
- *  How to choose variables: most of the surface variables are trivial, just by looking at the parameter names. It gets more complicated as you try to predict some surface phenomena that correlates with upper layer conditions such as CAPE, Lifted Index etc. For the purpose here, we aren't going into details about that.   
+ *  How to choose variables: most of the surface variables are trivial, just by looking at the parameter names. It gets more complicated as you try to predict some surface phenomena that correlates with upper layer conditions such as CAPE, Lifted Index etc. For the purpose here, we aren't going into details about that. 
+
+4. Zipcode and geo-lookup source
+ * Download a zipcode file from [ZIP-CODES] (https://www.zip-codes.com/) 
+ * 2017 Census shapefiles from [2017 TIGER/Line Shapefiles] (https://www.census.gov/geo/maps-data/data/tiger-line.html)
+ * Zillow's (https://www.zillow.com/howto/api/neighborhood-boundaries.htm) neighborhood files 
+ 
+5. API output
