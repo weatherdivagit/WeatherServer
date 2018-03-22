@@ -48,4 +48,4 @@ Water equivalent of accumulated snow depth |sdwe| surface| 0
  * [Zillow's](https://www.zillow.com/howto/api/neighborhood-boundaries.htm) neighborhood files 
  
 5. API output
-![Screenshot](WeatherServer/Screen Shot 2018-03-14 at 10.24.27 AM.png)
+![Screenshot](https://raw.github.com/weatherdivagit/WeatherServer/Screen Shot 2018-03-14 at 10.24.27 AM.png)
